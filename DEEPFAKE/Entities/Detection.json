@@ -1,0 +1,88 @@
+{
+  "name": "Detection",
+  "type": "object",
+  "properties": {
+    "filename": {
+      "type": "string",
+      "description": "Original filename of uploaded media"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "URL to the uploaded file"
+    },
+    "file_type": {
+      "type": "string",
+      "enum": [
+        "image",
+        "video"
+      ],
+      "description": "Type of media file"
+    },
+    "confidence_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence score of deepfake detection (0-1)"
+    },
+    "is_deepfake": {
+      "type": "boolean",
+      "description": "Whether the file is detected as deepfake"
+    },
+    "threshold_used": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Threshold value used for detection"
+    },
+    "processing_time": {
+      "type": "number",
+      "description": "Time taken to process in seconds"
+    },
+    "heatmap_data": {
+      "type": "array",
+      "description": "Heatmap coordinate data for visualization",
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "intensity": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "analysis_details": {
+      "type": "object",
+      "properties": {
+        "face_regions": {
+          "type": "number"
+        },
+        "suspicious_areas": {
+          "type": "number"
+        },
+        "quality_score": {
+          "type": "number"
+        },
+        "resolution": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "filename",
+    "file_url",
+    "file_type",
+    "confidence_score",
+    "is_deepfake",
+    "threshold_used"
+  ]
+}
